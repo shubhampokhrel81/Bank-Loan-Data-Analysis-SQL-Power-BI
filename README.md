@@ -7,7 +7,7 @@ Finance Domain | Bank Loan Analysis
 ```sql 
 select count(id) as total_loan_applications from bank_loan_data;
 ```
-Output:
+Output:<br>
 ![Total loan applications](images/image1.png)
 
 
@@ -26,5 +26,5 @@ FROM bank_loan_data
 WHERE YEAR(issue_date) = YEAR(GETDATE()) 
 AND MONTH(issue_date) = MONTH(GETDATE());
 ```
-Output:
+Output:<br>
 ![Total loan applications](images/image2.png)
