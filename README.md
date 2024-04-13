@@ -143,3 +143,95 @@ ORDER BY
 
 <strong>Output:</strong><br>
 ![Average Interest Rate Month over Month](images/image6.png)
+
+### 6. Average Debt to Income Ratio
+
+```sql
+SELECT
+	ROUND(AVG(dti)*100,4) as average_debt_to_income_ratio
+FROM
+	bank_loan_data
+```
+
+<strong>Output:</strong><br>
+![Average Debt to Income Ratio](images/image7.png)
+
+## Good Loan Vs Bad Loan KPI's
+
+### 7.1 Good Loan Percentage
+
+```sql
+SELECT
+	COUNT(CASE WHEN loan_status = 'Fully Paid' OR loan_status = 'Current' THEN id END)*100.0
+	/
+	COUNT(id) as Good_Loan_Percentage
+FROM
+	bank_loan_data
+```
+or
+```sql
+SELECT
+	COUNT(CASE WHEN loan_status IN ('Fully Paid', 'Current') THEN id END)*100.0
+	/
+	COUNT(id) as Good_Loan_Percentage
+FROM
+	bank_loan_data
+```
+<strong>Output:</strong><br>
+![Average Debt to Income Ratio](images/image7.1.png)
+
+### 7.2 Good Loan Applications
+
+```sql
+SELECT
+	count(id) as Good_Loan_Applications
+FROM
+	bank_loan_data
+WHERE
+	loan_status IN ('Fully Paid', 'Current');
+```
+<strong>Output:</strong><br>
+![Average Debt to Income Ratio](images/image7.2.png)
+
+### 7.3 Good Loan Total Funded Amount
+
+```sql
+SELECT
+	SUM(loan_amount) as Good_Loan_Funded_Amount
+FROM
+	bank_loan_data
+WHERE
+	loan_status IN ('Fully Paid', 'Current');
+
+```
+<strong>Output:</strong><br>
+![Average Debt to Income Ratio](images/image7.3.1.png)
+
+or (cast result to decimal type and using concat method to add millions in the suffix)
+
+```sql
+SELECT
+	CONCAT(CAST(SUM(loan_amount)/1000000 AS DECIMAL(18,2)), ' millions') as "Good_Loan_Funded_Amount (in millions)"
+FROM
+	bank_loan_data
+WHERE
+	loan_status IN ('Fully Paid', 'Current');
+```
+<strong>Output:</strong><br>
+![Average Debt to Income Ratio](images/image7.3.2.png)
+
+### 7.4 Good Loan Total Amount Received
+
+```sql
+SELECT
+	CONCAT(CAST(SUM(total_payment)/1000000 AS DECIMAL(18,2)), ' millions') as Good_Loan_Amount_Received
+FROM
+	bank_loan_data
+WHERE
+	loan_status IN ('Fully Paid', 'Current');
+```
+
+<strong>Output:</strong><br>
+![Average Debt to Income Ratio](images/image7.4.png)
+
+### 8. Bad Loan Percentage

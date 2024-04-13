@@ -1,3 +1,4 @@
+use Bank_Loan_DB;
 SELECT top 5 * FROM bank_loan_data;
 
 SELECT count(id) as total_loan_applications from bank_loan_data;
@@ -122,3 +123,83 @@ FROM
 ORDER BY
 	Year, 
 	Month;
+
+-- Average Debt to Income Ratio
+
+SELECT
+	ROUND(AVG(dti)*100,4) as average_debt_to_income_ratio
+FROM
+	bank_loan_data
+
+-- Average DTI group by month
+SELECT 
+	YEAR(issue_date) as Year,
+	MONTH(issue_date) as Month,
+	ROUND(AVG(dti)*100,4) as Monthly_average_dti
+FROM 
+	bank_loan_data
+WHERE
+	YEAR(issue_date) = 2021
+GROUP BY
+	YEAR(issue_date),
+	MONTH(issue_date)
+ORDER BY
+	Month;
+
+---------------------------- Good Loan vs Bad Loan KPI's --------------------------------
+--- Good Loan Percentage
+SELECT
+	COUNT(CASE WHEN loan_status = 'Fully Paid' OR loan_status = 'Current' THEN id END)*100
+	/
+	COUNT(id) as Good_Loan_Percentage
+FROM
+	bank_loan_data
+
+	-- or --
+SELECT
+	COUNT(CASE WHEN loan_status IN ('Fully Paid', 'Current') THEN id END)*100.0
+	/
+	COUNT(id) as Good_Loan_Percentage
+FROM
+	bank_loan_data
+
+
+--- Bad Loan Percentage
+
+SELECT
+	COUNT(CASE WHEN loan_status IN ('Charged Off') THEN id END)*100.0
+	/
+	COUNT(id) as Bad_Loan_Percentage
+FROM
+	bank_loan_data
+
+
+SELECT
+	count(id) as Good_Loan_Applications
+FROM
+	bank_loan_data
+WHERE
+	loan_status IN ('Fully Paid', 'Current');
+
+SELECT
+	SUM(loan_amount) as Good_Loan_Funded_Amount
+FROM
+	bank_loan_data
+WHERE
+	loan_status IN ('Fully Paid', 'Current');
+
+-- Total Good Loan Funded Amount
+
+SELECT
+	CONCAT(CAST(SUM(loan_amount)/1000000 AS DECIMAL(18,2)), ' millions') as "Good_Loan_Funded_Amount (in millions)"
+FROM
+	bank_loan_data
+WHERE
+	loan_status IN ('Fully Paid', 'Current');
+
+SELECT
+	CONCAT(CAST(SUM(total_payment)/1000000 AS DECIMAL(18,2)), ' millions') as Good_Loan_Amount_Received
+FROM
+	bank_loan_data
+WHERE
+	loan_status IN ('Fully Paid', 'Current');
