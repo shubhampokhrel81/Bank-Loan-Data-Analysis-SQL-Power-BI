@@ -2,17 +2,17 @@
 Finance Domain | Bank Loan Analysis
 
 # KPI
-### <span style="color:red"> 1. Total Loan Applications </span>
+### 1. Total Loan Applications
 
 ```sql 
 select count(id) as total_loan_applications from bank_loan_data;
 ```
-#### Output:{style="color:navy"}
+<strong>Output:</strong><br>
 ![Total loan applications](images/image1.png)
 
 
 
-### 2. Month to Date Loan Applications{style="color:red"}
+### 2. Month to Date Loan Applications
 
 ```sql
 SELECT count(id) as MTD_loan_applications from bank_loan_data
@@ -26,20 +26,20 @@ FROM bank_loan_data
 WHERE YEAR(issue_date) = YEAR(GETDATE()) 
 AND MONTH(issue_date) = MONTH(GETDATE());
 ```
-#### Output:{style="color:navy"}
+<strong>Output:</strong><br>
 ![Total loan applications](images/image2.png)
 
-### 3. Month to Date Total Funded Amount{style="color:red"}
+### 3. Month to Date Total Funded Amount
 
 ```sql
 SELECT SUM(loan_amount) as MTD_Total_Funded_Amount from bank_loan_data
 WHERE MONTH(issue_date) = 12 AND YEAR(issue_date) = 2021;
 ```
 
-#### Output:{style="color:navy"}
+<strong>Output:</strong><br>
 ![Total funded amount](images/image3.png)
 
-### 4. Month over Month Total Funded Amount{style="color:red"}
+### 4. Month over Month Total Funded Amount
 ```sql
 
 WITH MonthlyTotals AS (
@@ -80,10 +80,10 @@ ORDER BY
     Month;
 
 ```
-#### Output:{style="color:navy"}
+<strong>Output:</strong><br>
 ![Total funded amount](images/image4.png)
 
-### 5. Average Interest Rate for year 2021{style="color:red"}
+### 5. Average Interest Rate for year 2021
 ```sql
 SELECT 
 	ROUND(AVG(int_rate)*100,2) as average_interest_rate
@@ -93,10 +93,10 @@ WHERE
 	YEAR(issue_date) = 2021;
 ```
 
-#### Output:{style="color:navy"}
+<strong>Output:</strong><br>
 ![Average Interest Rate](images/image5.png)
 
-### 5. Month over Month Average Interest Rate{style="color:red"}
+### 5. Month over Month Average Interest Rate
 
 ```sql
 WITH MonthlyInterestRate AS(
@@ -141,5 +141,5 @@ ORDER BY
 
 ```
 
-#### Output:{style="color:navy"}
+<strong>Output:</strong><br>
 ![Average Interest Rate Month over Month](images/image6.png)
