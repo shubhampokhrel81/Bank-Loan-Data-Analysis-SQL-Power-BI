@@ -203,3 +203,34 @@ FROM
 	bank_loan_data
 WHERE
 	loan_status IN ('Fully Paid', 'Current');
+
+-- Bad Loan
+
+SELECT
+	COUNT(CASE WHEN loan_status = 'Charged Off' THEN id END)*100.0
+	/
+	COUNT(id) as Bad_Loan_Percentage
+FROM
+	bank_loan_data
+
+
+SELECT
+	count(id) as Bad_Loan_Applications
+FROM
+	bank_loan_data
+WHERE
+	loan_status IN ('Charged Off');
+
+SELECT
+	CONCAT(CAST(SUM(loan_amount)/1000000 AS DECIMAL(18,2)), ' millions') as Bad_Loan_Total_Funded_Amount
+FROM
+	bank_loan_data
+WHERE
+	loan_status IN ('Charged Off');
+
+SELECT
+	CONCAT(CAST(SUM(total_payment)/1000000 AS DECIMAL(18,2)), ' millions') as Bad_Loan_Amount_Received
+FROM
+	bank_loan_data
+WHERE
+	loan_status IN ('Charged Off');

@@ -178,7 +178,7 @@ FROM
 	bank_loan_data
 ```
 <strong>Output:</strong><br>
-![Average Debt to Income Ratio](images/image7.1.png)
+![Good Loan Percentage](images/image7.1.png)
 
 ### 7.2 Good Loan Applications
 
@@ -191,7 +191,7 @@ WHERE
 	loan_status IN ('Fully Paid', 'Current');
 ```
 <strong>Output:</strong><br>
-![Average Debt to Income Ratio](images/image7.2.png)
+![Good Loan Applications](images/image7.2.png)
 
 ### 7.3 Good Loan Total Funded Amount
 
@@ -205,7 +205,7 @@ WHERE
 
 ```
 <strong>Output:</strong><br>
-![Average Debt to Income Ratio](images/image7.3.1.png)
+![Good Loan Funded Amount](images/image7.3.1.png)
 
 or (cast result to decimal type and using concat method to add millions in the suffix)
 
@@ -218,7 +218,7 @@ WHERE
 	loan_status IN ('Fully Paid', 'Current');
 ```
 <strong>Output:</strong><br>
-![Average Debt to Income Ratio](images/image7.3.2.png)
+![Good Loan Funded Amount](images/image7.3.2.png)
 
 ### 7.4 Good Loan Total Amount Received
 
@@ -232,6 +232,58 @@ WHERE
 ```
 
 <strong>Output:</strong><br>
-![Average Debt to Income Ratio](images/image7.4.png)
+![Good Loan Total Amount Received](images/image7.4.png)
 
-### 8. Bad Loan Percentage
+### 8.1 Bad Loan Percentage
+
+```sql
+SELECT
+	COUNT(CASE WHEN loan_status = 'Charged Off' THEN id END)*100.0
+	/
+	COUNT(id) as Bad_Loan_Percentage
+FROM
+	bank_loan_data
+```
+<strong>Output:</strong><br>
+![Bad Loan Percentage](images/image8.1.png)
+
+### 8.2 Bad Loan Applications
+
+```sql
+
+SELECT
+	count(id) as Bad_Loan_Applications
+FROM
+	bank_loan_data
+WHERE
+	loan_status IN ('Charged Off');
+
+```
+<strong>Output:</strong><br>
+![Bad Loan Applications](images/image8.2.png)
+
+### 8.3 Bad Loan Total Funded Amount
+
+```sql
+SELECT
+	CONCAT(CAST(SUM(loan_amount)/1000000 AS DECIMAL(18,2)), ' millions') as Bad_Loan_Total_Funded_Amount
+FROM
+	bank_loan_data
+WHERE
+	loan_status IN ('Charged Off');
+
+```
+<strong>Output:</strong><br>
+![Bad Loan Applications](images/image8.3.png)
+
+### 8.4 Bad Loan Total Amount Received
+```sql
+SELECT
+	CONCAT(CAST(SUM(total_payment)/1000000 AS DECIMAL(18,2)), ' millions') as Bad_Loan_Amount_Received
+FROM
+	bank_loan_data
+WHERE
+	loan_status IN ('Charged Off');
+```
+<strong>Output:</strong><br>
+![Bad Loan Total Amount Received](images/image8.4.png)
