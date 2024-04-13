@@ -2,7 +2,7 @@
 Finance Domain | Bank Loan Analysis
 
 # KPI
-### + 1. Total Loan Applications
+### <span style="color:red"> 1. Total Loan Applications </span>
 
 ```sql 
 select count(id) as total_loan_applications from bank_loan_data;
