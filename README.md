@@ -9,7 +9,7 @@ To read the domain knowledge, please refer to  [![Domain Knowledge](https://img.
 
 ## Problem Statement
 
-To read the problem statement, please refer to [![Problem Statement](https://img.shields.io/badge/Domain%20Knowledge-blue)](problem_statement.md)
+To read the problem statement, please refer to [![Problem Statement](https://img.shields.io/badge/Problem%20Statement-blue)](problem_statement.md)
 
 ### Power BI Implementation
 
