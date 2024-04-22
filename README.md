@@ -1,15 +1,15 @@
 # Bank_Loan_Project
 Finance Domain | Bank Loan Analysis
 
-This repository contains the code and documentation for the Customized Bank Loan Report project. Below you'll find the domain knowledge in 'domain_knowledge.md', problem statement in `problem_statement.md` and an overview of the solution implemented using SQL and Power BI.
+This repository contains the code and documentation for the Customized Bank Loan Report project. Below you'll find the domain knowledge in `domain_knowledge.md`, problem statement in `problem_statement.md` and an overview of the solution implemented using SQL and Power BI.
 
 ## Domain Knowledge
 
-To read the domain knowledge, please refer to [![Domain Knowledge](https://img.shields.io/badge/Domain%20Knowledge-blue)](domain_knowledge.md)
+To read the domain knowledge, please refer to  [![Domain Knowledge](https://img.shields.io/badge/Domain%20Knowledge-blue)](domain_knowledge.md)
 
 ## Problem Statement
 
-To read the problem statement, please refer to [problem_statement.md](problem_statement.md).
+To read the problem statement, please refer to [![Problem Statement](https://img.shields.io/badge/Domain%20Knowledge-blue)](problem_statement.md)
 
 ### Power BI Implementation
 
