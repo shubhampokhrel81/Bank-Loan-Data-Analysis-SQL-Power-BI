@@ -5,7 +5,7 @@ This repository contains the code and documentation for the Customized Bank Loan
 
 ## Domain Knowledge
 
-To read the domain knowledge, please refer to [domain_knowledge.md](domain_knowledge.md).
+To read the domain knowledge, please refer to [![Domain Knowledge](https://img.shields.io/badge/Domain%20Knowledge-blue)](domain_knowledge.md)
 
 ## Problem Statement
 
