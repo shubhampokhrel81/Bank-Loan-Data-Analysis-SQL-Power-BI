@@ -10,7 +10,8 @@ To read the problem statement, please refer to [problem_statement.md](problem_st
 ### Power BI Implementation
 
 Click the button below to view the Power BI dashboard:
-[![View Dashboard](https://img.shields.io/badge/View%20Dashboard-Click%20Here-blue)](https://app.powerbi.com/view?r=eyJrIjoiNzAxODcyODctMjM4Ni00ODc3LWExNjgtM2UxZWEwMmNjNGM1IiwidCI6ImI2NDE3Y2QwLTFmNzMtNDQ3MS05YTM5LTIwOTUzODIyYTM0YSIsImMiOjN9)
+
+[![View Dashboard](https://img.shields.io/badge/View%20Dashboard)](https://app.powerbi.com/view?r=eyJrIjoiNzAxODcyODctMjM4Ni00ODc3LWExNjgtM2UxZWEwMmNjNGM1IiwidCI6ImI2NDE3Y2QwLTFmNzMtNDQ3MS05YTM5LTIwOTUzODIyYTM0YSIsImMiOjN9)
 
 ### SQL Implementation
 
